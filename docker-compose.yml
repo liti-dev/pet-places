@@ -15,7 +15,7 @@ services:
   app:
     image: pet_places
     build:
-      context: . # Use the current directory to build the image
+      context: ./backend
     container_name: pet_places_app
     environment:
       DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?sslmode=disable
@@ -24,6 +24,16 @@ services:
       - postgres # Ensure the database starts before the app
     ports:
       - "8080:8080"
+
+  frontend:
+    image: pet_places_frontend
+    build:
+      context: ./frontend
+    container_name: pet_places_frontend
+    ports:
+      - "5000:80"
+    depends_on:
+      - app # Ensure the backend starts before the frontend
 
 volumes:
   postgres_data:

@@ -232,7 +232,7 @@ func (s *server) deletePlace(w http.ResponseWriter, r *http.Request) {
 
 
 // Done TILT OS
-// Explore TILT (frontend)
+// Done TILT (frontend)
 // Done separate pet_places
 // CI/CD GitHub Actions
 // Integration testing 
