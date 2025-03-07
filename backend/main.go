@@ -81,7 +81,8 @@ func logMiddleware(l *slog.Logger) func(http.Handler) http.Handler {
 			// l.Println(r.Method, r.URL.Path)
 			next.ServeHTTP(w, r)
 			l.Warn("Made it")
-			l.Info("Request completed, status code: ", r.Method)})
+			// l.Info("Request completed, status code: ", r.Method)
+		})
 	}
 }
 
