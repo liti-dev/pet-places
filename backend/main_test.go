@@ -22,6 +22,9 @@ func setupTestServer(t *testing.T) (*server, *http.ServeMux) {
 }
 
 func setupTestDB(t *testing.T) *sql.DB {
+	if testing.Short() {
+		t.Skip("skipping test in short mode.")
+}
 	testConnStr := os.Getenv("TEST_DATABASE_URL")
 	if testConnStr == "" {
 		t.Fatalf("TEST_DATABASE_URL is not set")
