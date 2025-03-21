@@ -16,11 +16,13 @@ var dbWrapper *DB
 
 func setupTestServer(t *testing.T) (*server, *http.ServeMux) {
 	mux := http.NewServeMux()
+	// & returns a pointer to the server struct
 	srv := &server{db: dbWrapper, router: mux}
 	srv.routes(logMiddleware(slog.Default()))
 	return srv, mux
 }
 
+// integration testing with actual database.
 func setupTestDB(t *testing.T) *sql.DB {
 	if testing.Short() {
 		t.Skip("skipping test in short mode.")

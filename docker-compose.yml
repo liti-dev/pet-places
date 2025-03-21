@@ -19,7 +19,7 @@ services:
     container_name: pet_places_app
     environment:
       DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?sslmode=disable
-      # TEST_DATABASE_URL: ${TEST_DATABASE_URL}
+
     depends_on:
       - postgres # Ensure the database starts before the app
     ports:
