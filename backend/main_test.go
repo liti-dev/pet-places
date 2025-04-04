@@ -28,14 +28,20 @@ func setupTestDB(t *testing.T) *sql.DB {
 		t.Skip("skipping test in short mode.")
 }
 	testConnStr := os.Getenv("TEST_DATABASE_URL")
+	
 	if testConnStr == "" {
 		t.Fatalf("TEST_DATABASE_URL is not set")
 	}
 	db, err := sql.Open("postgres", testConnStr)
+	
 	if err != nil {
 		t.Fatalf("Failed to connect to test database: %v", err)
 	}
 
+	err = db.Ping()
+	if err!=nil {
+		t.Fatalf("Failed to ping test database: %v", err)
+	}
 
 	dbWrapper := &DB{db}
 
