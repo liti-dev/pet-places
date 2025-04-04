@@ -41,6 +41,9 @@ jobs:
       - name: Verify dependencies
         run: go mod tidy
 
+      - name: Verify dependencies
+        run: go mod tidy
+
       - name: Build
         run: go build -v ./...
 
