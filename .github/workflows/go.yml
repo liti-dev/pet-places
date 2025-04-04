@@ -15,34 +15,16 @@ jobs:
     defaults:
       run:
         working-directory: ./backend
-    env:
-      POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-      POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-      POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
-      TEST_DATABASE_URL: ${{ secrets.TEST_DATABASE_URL }}
+
     steps:
       - uses: actions/checkout@v4
 
       - name: Set up Go
         uses: actions/setup-go@v4
-        with:
-          cache: false
         # with:
-        #   go-version: "1.22"
-
-      - name: Cache Go modules
-        uses: actions/cache@v4
+        #   cache: false
         with:
-          path: ~/go/pkg/mod
-          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
-          restore-keys: |
-            ${{ runner.os }}-go-
-
-      - name: Verify dependencies
-        run: go mod tidy
-
-      - name: Verify dependencies
-        run: go mod tidy
+          go-version: "1.22"
 
       - name: Build
         run: go build -v ./...
@@ -57,6 +39,12 @@ jobs:
     defaults:
       run:
         working-directory: ./backend
+
+    env:
+      POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+      POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+      POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+      TEST_DATABASE_URL: ${{ secrets.TEST_DATABASE_URL }}
     steps:
       - uses: actions/checkout@v4
 
