@@ -36,4 +36,5 @@ services:
       - app # Ensure the backend starts before the frontend
 
 volumes:
-  postgres_data:
+  postgres_data: # Persistent storage for PostgreSQL
+  # Naming on github action

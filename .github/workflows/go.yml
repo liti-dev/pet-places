@@ -63,6 +63,12 @@ jobs:
       #     sudo curl -L "https://github.com/docker/compose/releases/download/v2.3.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
       #     sudo chmod +x /usr/local/bin/docker-compose
       #     docker-compose --version
+      - name: Install PostgreSQL client
+        run: sudo apt-get update && sudo apt-get install -y postgresql-client
+
+      - name: Create test database
+        run: |
+          psql -h localhost -U ${{secrets.POSTGRES_USER}} -c "CREATE DATABASE ${POSTGRES_DB}_test;"
 
       - name: Start application-specific services using Docker Compose
         run: docker compose up -d
