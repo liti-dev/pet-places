@@ -68,7 +68,7 @@ jobs:
 
       - name: Create test database
         run: |
-          psql -h localhost -U ${{secrets.POSTGRES_USER}} -c "CREATE DATABASE ${POSTGRES_DB}_test;"
+          psql -h postgres -U ${{secrets.POSTGRES_USER}} -c "CREATE DATABASE ${POSTGRES_DB}_test;"
 
       - name: Start application-specific services using Docker Compose
         run: docker compose up -d
