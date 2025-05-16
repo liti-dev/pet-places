@@ -2,7 +2,7 @@ version: "3.8" # Specify the Docker Compose file format version
 services:
   postgres:
     image: postgres:15 # Use the official PostgreSQL image
-    container_name: postgres_container
+    container_name: postgres
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
