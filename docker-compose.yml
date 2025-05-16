@@ -24,10 +24,6 @@ services:
       - postgres # Ensure the database starts before the app
     ports:
       - "8080:8080"
-    extra_hosts:
-      - "postgres:127.0.0.1"
-      - "somehost:162.242.195.82"
-      - "otherhost:50.31.209.229"
 
   frontend:
     image: pet_places_frontend
