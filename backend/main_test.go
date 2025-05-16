@@ -32,7 +32,10 @@ func setupTestDB(t *testing.T) *sql.DB {
 	if testConnStr == "" {
 		t.Fatalf("TEST_DATABASE_URL is not set")
 	}
+	fmt.Println("Connecting to test database:", testConnStr)
 	db, err := sql.Open("postgres", testConnStr)
+	
+
 	
 	if err != nil {
 		t.Fatalf("Failed to connect to test database: %v", err)
